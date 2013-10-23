@@ -20,13 +20,21 @@ module Cuhaml::Contrib
       end
     end
 
-    it "yields the given block" do
+    let(:body) do
       _, _, body = Cuba.call({ "PATH_INFO" => "/", "SCRIPT_NAME" => "/" })
-      body.first.must_match /alpha\s+beta\s+gamma\s+/
+      body.first
+    end
+
+    it "yields the given block" do
+      body.must_match /alpha\s+beta\s+gamma\s+/
     end
 
     it "sets the default template engine" do
       Cuba.settings[:render][:template_engine].must_equal "haml"
+    end
+
+    it "outputs content conditionally" do
+      body.wont_include "omega"
     end
   end
 end
