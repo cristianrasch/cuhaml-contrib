@@ -20,7 +20,7 @@ Or install it yourself as:
 
 1. Require it:
 
-    `require "cuhaml-contrib"`
+    `require "cuhaml/contrib"`
 
 2. Enable the plugin:
 
